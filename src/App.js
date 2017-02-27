@@ -6,75 +6,75 @@ import './App.css';
 
 class App extends Component {
 	constructor(props) {
-    super(props);
-    this.state = {
-    	totalClassic: 0,
-    	totalStdout: 0,
-    	totalPremium: 0,
-    	subTotal: 0,
-    	value: '',
-    	readyToCheckout: false,
-    	payableAmount: 0
-    };
-    this.numberOfClassicAd 	= 0;
-    this.numberOfStdoutAd 	= 0;
-    this.numberOfPremiumAd 	= 0;
+		super(props);
+		this.state = {
+			totalClassic: 0,
+			totalStdout: 0,
+			totalPremium: 0,
+			subTotal: 0,
+			value: '',
+			readyToCheckout: false,
+			payableAmount: 0
+		};
+		this.numberOfClassicAd 	= 0;
+		this.numberOfStdoutAd 	= 0;
+		this.numberOfPremiumAd 	= 0;
 
-    this.totalClassic 	= 0;
-    this.totalStdout 		= 0;
-    this.totalPremium 	= 0;
+		this.totalClassic 	= 0;
+		this.totalStdout 		= 0;
+		this.totalPremium 	= 0;
 
-    this.classicDeals = [{name: "unilever", deduct:1, priceDrop:0, itemMore: 2}, {name: "ford", deduct:1, priceDrop:0, itemMore: 4}];
-    this.StdoutDeals 		= [{name: "apple", deduct:0, priceDrop:299.99, itemMore: 0}, {name: "ford", deduct:0, priceDrop:309.99, itemMore: 0}];
-    this.premiumDeals 	= [{name: "nike", deduct:0, priceDrop:379.99, itemMore: 3}, {name: "ford", deduct:0, priceDrop:389.99, itemMore: 3}];
+		this.classicDeals = [{name: "unilever", deduct:1, priceDrop:0, itemMore: 2}, {name: "ford", deduct:1, priceDrop:0, itemMore: 4}];
+		this.StdoutDeals 		= [{name: "apple", deduct:0, priceDrop:299.99, itemMore: 0}, {name: "ford", deduct:0, priceDrop:309.99, itemMore: 0}];
+		this.premiumDeals 	= [{name: "nike", deduct:0, priceDrop:379.99, itemMore: 3}, {name: "ford", deduct:0, priceDrop:389.99, itemMore: 3}];
 
-    this.handleClassic 	= this.handleClassic.bind(this);
-    this.handleStdout 	= this.handleStdout.bind(this);
-    this.handlePremium 	= this.handlePremium.bind(this);
-    this.handleChange 	= this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
-  componentDidMount(){}
+		this.handleClassic 	= this.handleClassic.bind(this);
+		this.handleStdout 	= this.handleStdout.bind(this);
+		this.handlePremium 	= this.handlePremium.bind(this);
+		this.handleChange 	= this.handleChange.bind(this);
+		//this.handleSubmit = this.handleSubmit.bind(this);
+	}
+	
+	componentDidMount(){}
 
 	handleClassic(ct, clsAdCount){		
 		var total = 0.00;
-  	total = parseFloat(ct) + this.totalStdout + this.totalPremium;
-  	this.numberOfClassicAd = clsAdCount;
-  	this.setState({subTotal: total, totalClassic: ct});
-  	this.totalClassic = ct;
+		total = parseFloat(ct) + this.totalStdout + this.totalPremium;
+		this.numberOfClassicAd = clsAdCount;
+		this.setState({subTotal: total, totalClassic: ct});
+		this.totalClassic = ct;
 	}
 
 	handleStdout(st, stdAdCount){
 		var total = 0.00;
-  	total = parseFloat(st) + this.totalClassic + this.totalPremium;
-  	this.numberOfStdoutAd = stdAdCount;
-  	this.totalStdout = st;
+		total = parseFloat(st) + this.totalClassic + this.totalPremium;
+		this.numberOfStdoutAd = stdAdCount;
+		this.totalStdout = st;
 		this.setState({subTotal: total, totalStdout: st});
 	}
 
 	handlePremium(pt, pAdCount){
 		var total = 0.00;
-  	total = parseFloat(pt) + this.totalClassic + this.totalStdout;
-  	this.numberOfPremiumAd 	= pAdCount;
-  	this.totalPremium = pt;
+		total = parseFloat(pt) + this.totalClassic + this.totalStdout;
+		this.numberOfPremiumAd 	= pAdCount;
+		this.totalPremium = pt;
 		this.setState({subTotal: total, totalStdout: pt});
 	}
 
 	handleChange(event) {
-    this.setState({value: event.target.value}, this.proceedCheckout(event.target.value));
-  }
+		this.setState({value: event.target.value}, this.proceedCheckout(event.target.value));
+	}
 
-  proceedCheckout( cn ){
-  	var classicDeal = this.classicDealCalc( cn );
-  	var stdoutDeal = this.stdoutDealCalc( cn );
-  	var premiumDeal = this.premiumDealCalc( cn );
-  	var totalCalc = parseFloat(classicDeal) + parseFloat(stdoutDeal) + parseFloat(premiumDeal)
-  	this.setState({payableAmount: totalCalc.toFixed(2), readyToCheckout: true})
-  }
+	proceedCheckout( cn ){
+		var classicDeal = this.classicDealCalc( cn );
+		var stdoutDeal = this.stdoutDealCalc( cn );
+		var premiumDeal = this.premiumDealCalc( cn );
+		var totalCalc = parseFloat(classicDeal) + parseFloat(stdoutDeal) + parseFloat(premiumDeal)
+		this.setState({payableAmount: totalCalc.toFixed(2), readyToCheckout: true})
+	}
 
-  classicDealCalc(cname){
-  	var totalDealPrice = this.totalClassic;
+	classicDealCalc(cname){
+		var totalDealPrice = this.totalClassic;
 		this.classicDeals.forEach(function( company ){
 			if(company !== null && company.name === cname){
 					if( this.numberOfClassicAd > parseInt(company.itemMore,10)){
@@ -91,11 +91,11 @@ class App extends Component {
 			}
 		}.bind(this));
 		return totalDealPrice;
-  }
+	}
 
-  stdoutDealCalc( cname ){
-  	var totalDealPrice = this.totalStdout;
-  	this.StdoutDeals.forEach(function( company ){
+	stdoutDealCalc( cname ){
+		var totalDealPrice = this.totalStdout;
+		this.StdoutDeals.forEach(function( company ){
 			if(company !== null && company.name === cname){
 					if( this.numberOfStdoutAd > parseInt(company.itemMore,10)){
 						var perStd = 0.00;
@@ -113,11 +113,11 @@ class App extends Component {
 			}
 		}.bind(this));
 		return totalDealPrice;
-  }
+	}
 
-  premiumDealCalc( cname ){
-  	var totalDealPrice = this.totalPremium ;
-  	this.premiumDeals.forEach(function( company ){
+	premiumDealCalc( cname ){
+		var totalDealPrice = this.totalPremium ;
+		this.premiumDeals.forEach(function( company ){
 			if(company !== null && company.name === cname){
 					if( this.numberOfPremiumAd > parseInt(company.itemMore,10)){
 						var perStd = 0.00;
@@ -135,7 +135,7 @@ class App extends Component {
 			}
 		}.bind(this));
 		return totalDealPrice;
-  }
+	}
 
 	render() {
 		var discountPrice = "";
@@ -178,11 +178,11 @@ class App extends Component {
 									<select value={this.state.value} onChange={this.handleChange}>
 										<option value="">Choose</option>
 										<option value="default">Default</option>
-				            <option value="unilever">Unilever</option>
-				            <option value="apple">Apple</option>
-				            <option value="nike">Nike</option>
-				            <option value="ford">Ford</option>
-				          </select>
+										<option value="unilever">Unilever</option>
+										<option value="apple">Apple</option>
+										<option value="nike">Nike</option>
+										<option value="ford">Ford</option>
+									</select>
 								</div> 
 								<div className="form-group">
 									<div className="align-left">
