@@ -24,8 +24,8 @@ class App extends Component {
 		this.totalStdout 		= 0;
 		this.totalPremium 	= 0;
 
-		this.classicDeals = [{name: "unilever", deduct:1, priceDrop:0, itemMore: 2}, {name: "ford", deduct:1, priceDrop:0, itemMore: 4}];
-		this.StdoutDeals 		= [{name: "apple", deduct:0, priceDrop:299.99, itemMore: 0}, {name: "ford", deduct:0, priceDrop:309.99, itemMore: 0}];
+		this.classicDeals 	= [{name: "unilever", deduct:1, priceDrop:0, itemMore: 2}, {name: "ford", deduct:1, priceDrop:0, itemMore: 4}];
+		this.StdoutDeals 	= [{name: "apple", deduct:0, priceDrop:299.99, itemMore: 0}, {name: "ford", deduct:0, priceDrop:309.99, itemMore: 0}];
 		this.premiumDeals 	= [{name: "nike", deduct:0, priceDrop:379.99, itemMore: 3}, {name: "ford", deduct:0, priceDrop:389.99, itemMore: 3}];
 
 		this.handleClassic 	= this.handleClassic.bind(this);
@@ -141,9 +141,9 @@ class App extends Component {
 		var discountPrice = "";
 		if( this.state.readyToCheckout ){
 			discountPrice = <span>
-												<label>------------------</label>
-												<label>Payable: ${this.state.payableAmount}</label>
-										</span>
+							<label>------------------</label>
+							<label>Payable: ${this.state.payableAmount}</label>
+					</span>;
 		}
 		return (
 			<div className="container">
