@@ -30,13 +30,14 @@
     "react-addons-test-utils": "^15.4.1",
     "sinon": "^1.17.4"
   },
-  "jest": {
+  "//jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "//test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   }
 }
